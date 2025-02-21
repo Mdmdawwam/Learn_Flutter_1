@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'navigator.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -61,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
           color: Colors.black,
         ),
       ),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: double.infinity,
         child: Column(

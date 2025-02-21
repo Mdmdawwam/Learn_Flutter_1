@@ -59,6 +59,11 @@ flutter:
   assets:
     - assets/ori.jpg
     - assets/5639782_2942004-removebg-preview.png
+    - assets/pexels-airamdphoto-30731013.jpg
+    - assets/pexels-airamdphoto-30762186.jpg
+    - assets/pexels-introspectivedsgn-30745494.jpg
+    - assets/pexels-onbab-30743603.jpg
+    - assets/beer-can.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

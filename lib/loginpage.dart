@@ -5,6 +5,8 @@ import 'package:profil/login.dart';
 import 'package:profil/signup.dart';
 
 class Loginpage extends StatelessWidget {
+  const Loginpage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

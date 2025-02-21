@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:profil/myhomepage.dart';
+import 'package:profil/shop.dart';
 import 'package:profil/utama.dart';
 
 class Navigation extends StatefulWidget {
@@ -15,16 +16,13 @@ class _NavigationState extends State<Navigation> {
 
   final List<Widget> pages = [
     Utama(),
+    shop(),
     MyHomePage(),
   ];
 
   final items = <Widget>[
     Icon(Icons.home, size: 20, color: Colors.redAccent, semanticLabel: 'home'),
     Icon(Icons.shop, size: 20, color: Colors.redAccent, semanticLabel: 'shop'),
-    Icon(Icons.favorite,
-        size: 20, color: Colors.redAccent, semanticLabel: 'fav'),
-    Icon(Icons.search,
-        size: 20, color: Colors.redAccent, semanticLabel: 'search'),
     Icon(Icons.person,
         size: 20, color: Colors.redAccent, semanticLabel: 'person'),
   ];
