@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profil/data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DetailProduk extends StatefulWidget {
   const DetailProduk({super.key, required this.produk});
@@ -153,15 +154,15 @@ class _DetailProdukState extends State<DetailProduk> {
                     ],
                   ),
                 ),
-                Center(
+                GestureDetector(
+                  onTap: tambahKeKeranjang,
                   child: Container(
                     width: 190,
                     height: 60,
                     decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                        color: Colors.green),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: Colors.green,
+                    ),
                     child: const Center(
                       child: Text(
                         'Pesan',
@@ -172,12 +173,38 @@ class _DetailProdukState extends State<DetailProduk> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> tambahKeKeranjang() async {
+    final harga =
+        int.tryParse(widget.produk.harga.replaceAll(RegExp(r'[^0-9]'), '')) ??
+            0;
+
+    final produk = {
+      'nama': widget.produk.nama,
+      'jumlah': count,
+      'harga': harga,
+      'total': harga * count,
+      'gambar': widget.produk.image,
+      'waktu': Timestamp.now(),
+    };
+
+    try {
+      await FirebaseFirestore.instance.collection('keranjang').add(produk);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Berhasil ditambahkan ke keranjang')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Gagal menambahkan: $e')),
+      );
+    }
   }
 }

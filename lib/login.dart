@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'navigator.dart';
+import 'package:profil/authentication.dart';
+import 'package:profil/navigator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,15 +13,11 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Valid username and password
-  final String validUsername = "dawwam";
-  final String validPassword = "wammmganz124";
-
   void login() {
     String username = usernameController.text;
     String password = passwordController.text;
 
-    if (username == validUsername && password == validPassword) {
+    if (username == usernameController && password == passwordController) {
       // Navigate to homepage
       Navigator.push(
         context,
@@ -112,7 +109,13 @@ class _LoginPageState extends State<LoginPage> {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: login,
+                      onPressed: () async {
+                        await Authentication.signIn(
+                          context: context,
+                          email: usernameController.text,
+                          password: passwordController.text,
+                        );
+                      },
                       color: Colors.greenAccent,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
@@ -139,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],

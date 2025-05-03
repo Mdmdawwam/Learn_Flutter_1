@@ -35,11 +35,13 @@ class _UtamaState extends State<Utama> {
               Stack(
                 children: [
                   IconButton(
-                    onPressed: (() {}),
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Card()),
+                      );
+                    },
+                    icon: const Icon(Icons.shopping_cart, color: Colors.black),
                   ),
                   Positioned(
                     top: 0,
